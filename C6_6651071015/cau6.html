@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Câu 6</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <form>
+        Select your favorite Color:
+        <select id="mySelect">
+            <option>Red</option>
+            <option>Green</option>
+            <option>Blue</option>
+            <option>White</option>
+        </select>
+        <input type="button" id="countBtn" value="Count and Output all items">
+    </form>
+    <script>
+        $(document).ready(function() {
+            $("#countBtn").click(function() {
+                var optionsList = [];
+                $("#mySelect option").each(function() {
+                    optionsList.push($(this).text());
+                });
+                alert("Tổng số mục: " + optionsList.length + "\nBao gồm: " + optionsList.join(", "));
+            });
+        });
+    </script>
+</body>
+</html>

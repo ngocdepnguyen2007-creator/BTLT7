@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Câu 9</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <form id="registerForm">
+        Email *: <input type="text" id="email"><br><br>
+        Ngày sinh (mm/dd/yyyy) *: <input type="text" id="dob"><br><br>
+        Zip code (5 số) *: <input type="text" id="zip"><br><br>
+        <button id="finishBtn">Finish</button>
+        <button type="button" id="clearBtn">Clear</button>
+    </form>
+    <script>
+        $(document).ready(function() {
+            $("#clearBtn").click(function() {
+                $("#registerForm")[0].reset();
+            });
+
+            $("#finishBtn").click(function(e) {
+                e.preventDefault();
+                var isValid = true;
+                var email = $("#email").val();
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) isValid = false;
+
+                var dob = $("#dob").val();
+                if (/^(0[1-9]|1[0-2])[\/\-](0[1-9]|[12]\d|3[01])[\/\-]\d{4}$/.test(dob)) {
+                    var year = parseInt(dob.substring(dob.length - 4));
+                    if (year >= new Date().getFullYear()) isValid = false;
+                } else {
+                    isValid = false;
+                }
+
+                if (!/^\d{5}$/.test($("#zip").val())) isValid = false;
+
+                if (!isValid) {
+                    alert("Vui lòng kiểm tra lại thông tin nhập vào chưa hợp lệ.");
+                } else {
+                    alert("Dữ liệu hợp lệ!");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+```<FollowUp>

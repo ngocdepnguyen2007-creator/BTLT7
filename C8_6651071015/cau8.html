@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Câu 8</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <input type="text" id="num1" size="5">
+    <button class="calc" data-op="+">+</button>
+    <button class="calc" data-op="-">-</button>
+    <button class="calc" data-op="x">x</button>
+    <button class="calc" data-op="/">/</button>
+    <button class="calc" data-op="^">^</button>
+    <input type="text" id="num2" size="5"> = 
+    <input type="text" id="result" size="5" readonly>
+    <script>
+        $(document).ready(function() {
+            $(".calc").click(function() {
+                var n1 = parseFloat($("#num1").val());
+                var n2 = parseFloat($("#num2").val());
+                var op = $(this).data("op");
+                var res = 0;
+                if (op === "+") res = n1 + n2;
+                if (op === "-") res = n1 - n2;
+                if (op === "x") res = n1 * n2;
+                if (op === "/") res = n1 / n2;
+                if (op === "^") res = Math.pow(n1, n2);
+                $("#result").val(res);
+            });
+        });
+    </script>
+</body>
+</html>

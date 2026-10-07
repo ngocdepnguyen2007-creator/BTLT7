@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Câu 7</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <form id="linkForm">
+        <input type="text" id="linkInput" placeholder="Nhập đường link">
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        $(document).ready(function() {
+            $("#linkForm").submit(function(e) {
+                e.preventDefault();
+                var url = $("#linkInput").val();
+                if (url !== "") {
+                    if (confirm("Bạn có chắc chắn muốn chuyển đến link này?")) {
+                        window.location.href = url.startsWith('http') ? url : 'http://' + url;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
